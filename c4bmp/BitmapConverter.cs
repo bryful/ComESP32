@@ -198,9 +198,9 @@ namespace c4bmp
 				{
 					newBmp.Save(dst, ImageFormat.Bmp);
 					newBmp.Dispose();
+					ret = true;
 				}
 				bmp.Dispose();
-				ret = true;
 			}
 			return ret;
 		}

@@ -14,13 +14,13 @@ namespace ComEsp32
 {
 	public partial class SerialForm : Form
 	{
-		public ComESP32 comM5Atom = new ComESP32();
+		public ComESP32 comesp32 = new ComESP32();
 		delegate void SetTextCallback(string text);
 
 		public SerialForm()
 		{
 			InitializeComponent();
-			comM5Atom.Receved += (sender, e) =>
+			comesp32.Receved += (sender, e) =>
 			{
 				if (e.Tag == "text")
 				{
@@ -36,13 +36,13 @@ namespace ComEsp32
 				else if(e.Tag == "gskn")
 				{
 					int col = BitConverter.ToInt32( e.Data, 0);
-					if (m3StackColorBar1.InvokeRequired)
+					if (px16BitColorBars1.InvokeRequired)
 					{
-						m3StackColorBar1.Invoke(new Action(() => m3StackColorBar1.ColorValue = col));
+						px16BitColorBars1.Invoke(new Action(() => px16BitColorBars1.ColorValue = col));
 					}
 					else
 					{
-						m3StackColorBar1.ColorValue = col;
+						px16BitColorBars1.ColorValue = col;
 					}
 				}
 				/*
@@ -67,10 +67,10 @@ namespace ComEsp32
 		private void ListupPort()
 		{
 			cmbPortList.Items.Clear();
-			cmbPortList.Items.AddRange(comM5Atom.ListupPort());
+			cmbPortList.Items.AddRange(comesp32.ListupPort());
 			if(cmbPortList.Items.Count > 0)
 			{
-				cmbPortList.SelectedIndex = comM5Atom.PortIndex;
+				cmbPortList.SelectedIndex = comesp32.PortIndex;
 			}
 			btnSend.Enabled = (cmbPortList.SelectedIndex >= 0);
 			gpSkin.Enabled = (cmbPortList.SelectedIndex >= 0);
@@ -79,16 +79,16 @@ namespace ComEsp32
 		{
 			bool ret = false;
 			if (cmbPortList.SelectedIndex < 0) return ret;
-			if (comM5Atom.PortIndex < 0)
+			if (comesp32.PortIndex < 0)
 			{
-				ret =  comM5Atom.OpenPort(cmbPortList.SelectedIndex);
+				ret =  comesp32.OpenPort(cmbPortList.SelectedIndex);
 			}
 			else
 			{
-				if (cmbPortList.SelectedIndex != comM5Atom.PortIndex)
+				if (cmbPortList.SelectedIndex != comesp32.PortIndex)
 				{
-					comM5Atom.ClosePort();
-					ret = comM5Atom.OpenPort(cmbPortList.SelectedIndex);
+					comesp32.ClosePort();
+					ret = comesp32.OpenPort(cmbPortList.SelectedIndex);
 				}
 				else
 				{
@@ -100,13 +100,24 @@ namespace ComEsp32
 		private void btnSend_Click(object sender, EventArgs e)
 		{
 			if(chekPort() == false) return;
-			comM5Atom.SendTextData(tbSend.Text);
+			string h = tbSend.Text.Trim();
+			if(h.Length != 4) return;
+			if(h=="text")
+			{
+				comesp32.SendTextData("text");
+				return;
+			}
+			else
+			{
+				byte[] bdata = System.Text.Encoding.UTF8.GetBytes(tbSend.Text + '\0');
+				comesp32.SendBinData(h,bdata);
+			}
 		}
 
 		private void BtnGetSkin_Click(object sender, EventArgs e)
 		{
 			if (chekPort() == false) return;
-			comM5Atom.GetSkin();
+			comesp32.GetSkin();
 
 		}
 
@@ -125,7 +136,7 @@ namespace ComEsp32
 		private void BtnSetSkin_Click(object sender, EventArgs e)
 		{
 			if (chekPort() == false) return;
-			comM5Atom.SetSkin(m3StackColorBar1.ColorValue);
+			comesp32.SetSkin(px16BitColorBars1.ColorValue);
 
 		}
 
@@ -145,7 +156,12 @@ namespace ComEsp32
 			string ss = tbSSID.Text.Trim();
 			string pp = tbPASSWORD.Text.Trim();
 			if ((ss.Length == 0)||(pp.Length==0)) return;
-			comM5Atom.SendBinData("wifi",ss+","+pp);
+			comesp32.SendBinData("wifi",ss+","+pp);
+		}
+
+		private void px16BitColorBars1_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

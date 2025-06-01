@@ -243,7 +243,7 @@ true);
 			}
 			return ret;
 		}
-		public bool SavePalFile(string s)
+		public bool SavePalFile(string s,bool is16bit =false)
 		{
 			bool ret = false;
 			string str = string.Empty;
@@ -254,13 +254,27 @@ true);
 				{
 					str += ",\r\n";
 				}
-				str += string.Format("{0:X2}{1:X2}{2:X2}", c.R, c.G, c.B);
+				if (is16bit)
+				{
+					int v = (c.R >> 3) << 11 | (c.G >> 2) << 5 | c.B >> 3;
+					str += string.Format("0x{0:X}", v);
+				}
+				else
+				{
+					str += string.Format("{0:X2}{1:X2}{2:X2}", c.R, c.G, c.B);
+
+				}			
 			}
 			if (File.Exists(s))
 			{
 				File.Delete(s);
 			}
-			File.WriteAllText(s, str.TrimEnd(','));
+			str = str.TrimEnd(',');
+			if(is16bit)
+			{
+				str = "u_int16_t palette[16]={\r\n" + str + "};\r\n";
+			}
+			File.WriteAllText(s, str);
 
 			return ret;
 		}
@@ -388,5 +402,80 @@ true);
 				this.Invalidate();
 			}
 		}
+		private  Color[] Read4BitBmpPalette(string filePath)
+		{
+			using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+			using (var reader = new BinaryReader(fs))
+			{
+				// BITMAPFILEHEADER (14 bytes)
+				ushort bfType = reader.ReadUInt16(); // "BM" = 0x4D42
+				if (bfType != 0x4D42)
+					throw new InvalidDataException("Not a BMP file.");
+
+				// bfSize, bfReserved1, bfReserved2
+				reader.ReadUInt32();
+				reader.ReadUInt16();
+				reader.ReadUInt16();
+
+				uint bfOffBits = reader.ReadUInt32();
+
+				// BITMAPINFOHEADER (40 bytes)
+				uint biSize = reader.ReadUInt32();
+				int biWidth = reader.ReadInt32();
+				int biHeight = reader.ReadInt32();
+				ushort biPlanes = reader.ReadUInt16();
+				ushort biBitCount = reader.ReadUInt16();
+
+				if (biBitCount != 4)
+					throw new InvalidDataException("Not a 4-bit BMP file.");
+
+				// biCompression, biSizeImage, biXPelsPerMeter, biYPelsPerMeter, biClrUsed, biClrImportant
+				reader.ReadUInt32(); // biCompression
+				reader.ReadUInt32(); // biSizeImage
+				reader.ReadInt32();  // biXPelsPerMeter
+				reader.ReadInt32();  // biYPelsPerMeter
+				uint biClrUsed = reader.ReadUInt32();
+				reader.ReadUInt32(); // biClrImportant
+
+				// パレットの色数を決定
+				int colorCount = (int)(biClrUsed != 0 ? biClrUsed : 16);
+
+				// パレットの先頭にシーク
+				long paletteOffset = 14 + biSize;
+				reader.BaseStream.Seek(paletteOffset, SeekOrigin.Begin);
+
+				Color[] palette = new Color[16];
+				for (int i = 0; i < 16; i++)
+				{
+					byte b = reader.ReadByte();
+					byte g = reader.ReadByte();
+					byte r = reader.ReadByte();
+					byte reserved = reader.ReadByte();
+					palette[i] = Color.FromArgb(255, r, g, b);
+				}
+
+				return palette;
+			}
+		}
+		public  bool Load4BitBmpPalette(string filePath)
+		{
+			try
+			{
+				Color[] palette = Read4BitBmpPalette(filePath);
+				if (palette.Length == 16)
+				{
+					_paletteColors = palette;
+					ChkPalette();
+					this.Invalidate();
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error loading palette: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			return false;
+		}
 	}
+
 }

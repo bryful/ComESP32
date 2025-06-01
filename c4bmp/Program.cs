@@ -35,16 +35,25 @@ namespace c4bmp
 				aaa.SavePalFile("palette.txt");
 				return;
 			}
+			if (args.Length < 2)
+			{
+				Console.WriteLine("param eeror!");
+				return ;
+			}
 			string fileName = "";
 			string paletteFile = "";
-			if (args.Length >0) fileName = args[0];
-			if (args.Length > 1) paletteFile = args[1];
+			fileName = args[0];
+			paletteFile = args[1];
 
 			if (File.Exists(paletteFile))
 			{
 				aaa.LoadPalFile(paletteFile);
 			}
-			string d = "";
+			else
+			{
+				Console.WriteLine("palette load error!");
+			}
+				string d = "";
 			try
 			{
 				d = Path.GetDirectoryName(fileName);
@@ -62,6 +71,7 @@ namespace c4bmp
 				string[] files = Directory.GetFiles(d, f);
 				foreach(string s in files)
 				{
+					Console.WriteLine(s);
 					aaa.Exec(s);
 				}
 			}
@@ -71,12 +81,20 @@ namespace c4bmp
 				foreach (string s in files)
 				{
 					aaa.Exec(s);
+					Console.WriteLine(s);
 				}
 
 			}
 			else if (File.Exists(fileName))
 			{
-				aaa.Exec(fileName);
+				if (aaa.Exec(fileName))
+				{
+					Console.WriteLine(fileName);
+				}
+				else
+				{
+					Console.WriteLine("error!:" + fileName);
+				}
 			}
 			else
 			{

@@ -107,8 +107,11 @@ true);
 			g.Clear(base.BackColor);
 			Rectangle rect = new Rectangle(0, _DispHeight, baseSize.Width, baseSize.Height);
 			using(SolidBrush brush = new SolidBrush(Color.FromArgb(0xFF, 0xFF, 0xFF)))
+			using(StringFormat sf = new StringFormat())
 			using (Pen p = new Pen(ForeColor))
 			{
+				sf.Alignment = StringAlignment.Center;
+				sf.LineAlignment = StringAlignment.Center;
 				for (int i = 0; i < 16; i++)
 				{
 					rect.X = i * baseSize.Width;
@@ -123,6 +126,8 @@ true);
 						p.Color = Color.White;
 						g.DrawRectangle(p, selRect);
 					}
+					brush.Color = _paletteColors[15-i];
+					g.DrawString($"{i}", this.Font, brush, rect, sf);
 				}
 			}
 		}

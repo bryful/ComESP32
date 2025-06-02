@@ -190,15 +190,18 @@ namespace ComEsp32
 		}
 		public bool chkPortESP32()
 		{
+			string bak = "";
+			if (_PortIndex >= 0)
+			{
+				bak = _portList[_PortIndex];
+			}
 			_portList = new string[0];
 			_portInfoList = new string[0];
-			string bak = "";
-			if (_PortIndex>=0)
-			{
-				bak = PortList[_PortIndex];
-			}
-			string[] lst = SerialPort.GetPortNames();
-			if(lst.Length == 0) return false;
+			HashSet<string> uniqueCharacters = new HashSet<string>(SerialPort.GetPortNames());
+			string[] lst = uniqueCharacters.ToArray();
+
+			if (lst.Length == 0) return false;
+			List<string> lst2 = new List<string>();
 			List<string> lstName = new List<string>();
 			List<string> lstInfo = new List<string>();
 			_chkMode = true;
@@ -214,15 +217,26 @@ namespace ComEsp32
 						RecevedEventArgs rc = new RecevedEventArgs("", 0, new byte[0]);
 						if(GetSerialData(out rc) == true)
 						{
+							Debug.WriteLine(rc.Tag);
+							Debug.WriteLine(rc.DataString);
+
 							if (rc.Tag == "info")
 							{
 								info= rc.DataString;
+							}
+							else
+							{
+								info = "error";
 							}
 						}
 					}
 					lstName.Add(nm);
 					lstInfo.Add(info);
-
+				}
+				else
+				{
+					lstName.Add(nm);
+					lstInfo.Add("cn not open!");
 				}
 			}
 			_chkMode = false;

@@ -17,6 +17,7 @@ namespace ComEsp32
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new SerialForm());
+			//Application.Run(new MainForm());
 		}
 	}
 }

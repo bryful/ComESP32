@@ -32,6 +32,7 @@
 			this.fileManu = new System.Windows.Forms.ToolStripMenuItem();
 			this.openMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.export16bitPaletteMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.importPngMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportPngMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,10 +44,10 @@
 			this.copyMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.pasteMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnOpen = new System.Windows.Forms.Button();
+			this.cbSpoit = new System.Windows.Forms.CheckBox();
+			this.px16BitColorBars1 = new ComEsp32.Px16BitColorBars();
 			this.previewPanel1 = new c4palette.PreviewPanel();
 			this.paletteCanvas1 = new c4palette.PaletteCanvas();
-			this.cbSpoit = new System.Windows.Forms.CheckBox();
-			this.export16bitPaletteMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -57,7 +58,7 @@
             this.editToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(551, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(534, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -89,6 +90,12 @@
 			this.saveMenu.Name = "saveMenu";
 			this.saveMenu.Size = new System.Drawing.Size(180, 22);
 			this.saveMenu.Text = "Save";
+			// 
+			// export16bitPaletteMenu
+			// 
+			this.export16bitPaletteMenu.Name = "export16bitPaletteMenu";
+			this.export16bitPaletteMenu.Size = new System.Drawing.Size(180, 22);
+			this.export16bitPaletteMenu.Text = "Export16bitPalette";
 			// 
 			// toolStripMenuItem1
 			// 
@@ -154,16 +161,38 @@
 			// 
 			// btnOpen
 			// 
-			this.btnOpen.Location = new System.Drawing.Point(12, 89);
+			this.btnOpen.Location = new System.Drawing.Point(318, 181);
 			this.btnOpen.Name = "btnOpen";
-			this.btnOpen.Size = new System.Drawing.Size(75, 23);
+			this.btnOpen.Size = new System.Drawing.Size(75, 56);
 			this.btnOpen.TabIndex = 3;
 			this.btnOpen.Text = "Open";
 			this.btnOpen.UseVisualStyleBackColor = true;
 			// 
+			// cbSpoit
+			// 
+			this.cbSpoit.AutoSize = true;
+			this.cbSpoit.Location = new System.Drawing.Point(318, 243);
+			this.cbSpoit.Name = "cbSpoit";
+			this.cbSpoit.Size = new System.Drawing.Size(50, 16);
+			this.cbSpoit.TabIndex = 4;
+			this.cbSpoit.Text = "Spoit";
+			this.cbSpoit.UseVisualStyleBackColor = true;
+			// 
+			// px16BitColorBars1
+			// 
+			this.px16BitColorBars1.Col = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+			this.px16BitColorBars1.ColorValue = 31;
+			this.px16BitColorBars1.Location = new System.Drawing.Point(12, 89);
+			this.px16BitColorBars1.MaximumSize = new System.Drawing.Size(348, 80);
+			this.px16BitColorBars1.MinimumSize = new System.Drawing.Size(348, 80);
+			this.px16BitColorBars1.Name = "px16BitColorBars1";
+			this.px16BitColorBars1.Size = new System.Drawing.Size(348, 80);
+			this.px16BitColorBars1.TabIndex = 5;
+			this.px16BitColorBars1.Text = "px16BitColorBars1";
+			// 
 			// previewPanel1
 			// 
-			this.previewPanel1.Location = new System.Drawing.Point(93, 89);
+			this.previewPanel1.Location = new System.Drawing.Point(12, 181);
 			this.previewPanel1.Name = "previewPanel1";
 			this.previewPanel1.Size = new System.Drawing.Size(300, 300);
 			this.previewPanel1.TabIndex = 2;
@@ -175,30 +204,16 @@
 			this.paletteCanvas1.MaximumSize = new System.Drawing.Size(516, 56);
 			this.paletteCanvas1.MinimumSize = new System.Drawing.Size(516, 56);
 			this.paletteCanvas1.Name = "paletteCanvas1";
+			this.paletteCanvas1.px16cb = this.px16BitColorBars1;
 			this.paletteCanvas1.Size = new System.Drawing.Size(516, 56);
 			this.paletteCanvas1.TabIndex = 0;
 			this.paletteCanvas1.Text = "paletteCanvas1";
 			// 
-			// cbSpoit
-			// 
-			this.cbSpoit.AutoSize = true;
-			this.cbSpoit.Location = new System.Drawing.Point(37, 118);
-			this.cbSpoit.Name = "cbSpoit";
-			this.cbSpoit.Size = new System.Drawing.Size(50, 16);
-			this.cbSpoit.TabIndex = 4;
-			this.cbSpoit.Text = "Spoit";
-			this.cbSpoit.UseVisualStyleBackColor = true;
-			// 
-			// export16bitPaletteMenu
-			// 
-			this.export16bitPaletteMenu.Name = "export16bitPaletteMenu";
-			this.export16bitPaletteMenu.Size = new System.Drawing.Size(180, 22);
-			this.export16bitPaletteMenu.Text = "Export16bitPalette";
-			// 
 			// Form1
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.ClientSize = new System.Drawing.Size(551, 407);
+			this.ClientSize = new System.Drawing.Size(534, 484);
+			this.Controls.Add(this.px16BitColorBars1);
 			this.Controls.Add(this.cbSpoit);
 			this.Controls.Add(this.btnOpen);
 			this.Controls.Add(this.previewPanel1);
@@ -240,6 +255,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem paletteFrom4BirBmpMenu;
 		private System.Windows.Forms.ToolStripMenuItem export16bitPaletteMenu;
+		private ComEsp32.Px16BitColorBars px16BitColorBars1;
 	}
 }
 

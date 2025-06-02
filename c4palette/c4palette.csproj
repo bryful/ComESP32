@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ComESP32\Px16BitColorBars.cs">
+      <Link>Px16BitColorBars.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\ComESP32\PxBitBar.cs">
+      <Link>PxBitBar.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -49,7 +49,7 @@
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(116, 41);
 			this.btnOK.TabIndex = 2;
-			this.btnOK.Text = "OK";
+			this.btnOK.Text = "Select";
 			this.btnOK.UseVisualStyleBackColor = true;
 			// 
 			// btnClose
@@ -65,9 +65,9 @@
 			// 
 			this.listBox1.FormattingEnabled = true;
 			this.listBox1.ItemHeight = 12;
-			this.listBox1.Location = new System.Drawing.Point(13, 54);
+			this.listBox1.Location = new System.Drawing.Point(13, 42);
 			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(179, 196);
+			this.listBox1.Size = new System.Drawing.Size(179, 208);
 			this.listBox1.TabIndex = 4;
 			// 
 			// PortSelectForm1

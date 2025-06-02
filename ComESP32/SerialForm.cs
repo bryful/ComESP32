@@ -14,7 +14,7 @@ namespace ComEsp32
 {
 	public partial class SerialForm : Form
 	{
-		public ComESP32 comesp32 = new ComESP32();
+		public SerialPortESP32 comesp32 = new SerialPortESP32();
 		delegate void SetTextCallback(string text);
 
 		public SerialForm()
@@ -61,7 +61,10 @@ namespace ComEsp32
 			//ListupPort();
 			cmbPortList.SelectedIndexChanged += (sender, e) =>
 			{
+				comesp32.PortIndex = cmbPortList.SelectedIndex;
 				btnSend.Enabled = (cmbPortList.SelectedIndex >= 0);
+				btnTextSend.Enabled = btnSend.Enabled;
+				gpSkin.Enabled = btnSend.Enabled;
 			};
 		}
 		private void ListupPort()
@@ -73,6 +76,7 @@ namespace ComEsp32
 				cmbPortList.SelectedIndex = comesp32.PortIndex;
 			}
 			btnSend.Enabled = (cmbPortList.SelectedIndex >= 0);
+			btnTextSend.Enabled = (cmbPortList.SelectedIndex >= 0);
 			gpSkin.Enabled = (cmbPortList.SelectedIndex >= 0);
 		}
 		private bool chekPort()
@@ -97,21 +101,12 @@ namespace ComEsp32
 			}
 			return ret;
 		}
-		private void btnSend_Click(object sender, EventArgs e)
+		private void btnTextSend_Click(object sender, EventArgs e)
 		{
 			if(chekPort() == false) return;
 			string h = tbSend.Text.Trim();
-			if(h.Length != 4) return;
-			if(h=="text")
-			{
-				comesp32.SendTextData("text");
-				return;
-			}
-			else
-			{
-				byte[] bdata = System.Text.Encoding.UTF8.GetBytes(tbSend.Text + '\0');
-				comesp32.SendBinData(h,bdata);
-			}
+			comesp32.SendTextData(h);
+
 		}
 
 		private void BtnGetSkin_Click(object sender, EventArgs e)
@@ -162,6 +157,16 @@ namespace ComEsp32
 		private void px16BitColorBars1_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void btnSend_Click(object sender, EventArgs e)
+		{
+
+			if (chekPort() == false) return;
+			string h = tbHeader.Text.Trim();
+			if (h.Length != 4) return;
+			byte[] bdata = System.Text.Encoding.UTF8.GetBytes(tbSend.Text + '\0');
+			comesp32.SendBinData(h, bdata);
 		}
 	}
 }

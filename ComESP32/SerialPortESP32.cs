@@ -34,7 +34,7 @@ namespace ComEsp32
 			Data = d; 
 		}
 	}
-	public class ComESP32
+	public class SerialPortESP32
 	{
 		private bool _chkMode = false;
 		public delegate void RecevedEventHandler(object sender, RecevedEventArgs e);
@@ -65,7 +65,7 @@ namespace ComEsp32
 			get { return _PortIndex; }
 			set { _PortIndex = value; }
 		}
-		public ComESP32()
+		public SerialPortESP32()
 		{
 
 			//ListupPort();
@@ -177,7 +177,9 @@ namespace ComEsp32
 				serialPort.Handshake = Handshake.None;
 				serialPort.DtrEnable = false;
 				serialPort.RtsEnable = false;
-				serialPort.WriteBufferSize = 51200;
+				serialPort.WriteBufferSize = 10240;
+				serialPort.ReadBufferSize = 10240;
+
 				serialPort.Open();
 			}
 			catch
@@ -195,10 +197,6 @@ namespace ComEsp32
 			{
 				bak = PortList[_PortIndex];
 			}
-			if (serialPort.IsOpen)
-			{
-				serialPort.Close();
-			}
 			string[] lst = SerialPort.GetPortNames();
 			if(lst.Length == 0) return false;
 			List<string> lstName = new List<string>();
@@ -206,8 +204,11 @@ namespace ComEsp32
 			_chkMode = true;
 			foreach (string nm in lst)
 			{
+				if (serialPort.IsOpen)
+					serialPort.Close();
 				if (OpenPortOn(nm))
 				{
+					string info = "";
 					if (SendBinData("info", "cnk"))
 					{
 						RecevedEventArgs rc = new RecevedEventArgs("", 0, new byte[0]);
@@ -215,11 +216,13 @@ namespace ComEsp32
 						{
 							if (rc.Tag == "info")
 							{
-								lstName.Add(nm);
-								lstInfo.Add(rc.DataString);
+								info= rc.DataString;
 							}
 						}
 					}
+					lstName.Add(nm);
+					lstInfo.Add(info);
+
 				}
 			}
 			_chkMode = false;

@@ -38,16 +38,18 @@
 			this.gpSkin = new System.Windows.Forms.GroupBox();
 			this.btnClear = new System.Windows.Forms.Button();
 			this.gbSend = new System.Windows.Forms.GroupBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.btnTextSend = new System.Windows.Forms.Button();
+			this.label3 = new System.Windows.Forms.Label();
+			this.tbHeader = new System.Windows.Forms.TextBox();
 			this.gpRecived = new System.Windows.Forms.GroupBox();
-			this.px16BitColorBars1 = new ComEsp32.Px16BitColorBars();
 			this.gpWifi = new System.Windows.Forms.GroupBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnSetWifi = new System.Windows.Forms.Button();
 			this.tbPASSWORD = new System.Windows.Forms.TextBox();
 			this.tbSSID = new System.Windows.Forms.TextBox();
-			this.tbHeader = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
+			this.px16BitColorBars1 = new ComEsp32.Px16BitColorBars();
 			this.gpSkin.SuspendLayout();
 			this.gbSend.SuspendLayout();
 			this.gpRecived.SuspendLayout();
@@ -59,18 +61,18 @@
 			this.tbSend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbSend.Location = new System.Drawing.Point(0, 43);
+			this.tbSend.Location = new System.Drawing.Point(6, 24);
 			this.tbSend.Multiline = true;
 			this.tbSend.Name = "tbSend";
 			this.tbSend.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.tbSend.Size = new System.Drawing.Size(453, 178);
+			this.tbSend.Size = new System.Drawing.Size(471, 146);
 			this.tbSend.TabIndex = 0;
 			// 
 			// btnSend
 			// 
-			this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnSend.Enabled = false;
-			this.btnSend.Location = new System.Drawing.Point(355, 227);
+			this.btnSend.Location = new System.Drawing.Point(165, 176);
 			this.btnSend.Name = "btnSend";
 			this.btnSend.Size = new System.Drawing.Size(98, 23);
 			this.btnSend.TabIndex = 1;
@@ -88,14 +90,14 @@
 			this.tbRecive.Name = "tbRecive";
 			this.tbRecive.ReadOnly = true;
 			this.tbRecive.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.tbRecive.Size = new System.Drawing.Size(452, 105);
+			this.tbRecive.Size = new System.Drawing.Size(305, 191);
 			this.tbRecive.TabIndex = 0;
 			// 
 			// BtnGetSkin
 			// 
-			this.BtnGetSkin.Location = new System.Drawing.Point(157, 113);
+			this.BtnGetSkin.Location = new System.Drawing.Point(363, 65);
 			this.BtnGetSkin.Name = "BtnGetSkin";
-			this.BtnGetSkin.Size = new System.Drawing.Size(130, 23);
+			this.BtnGetSkin.Size = new System.Drawing.Size(102, 33);
 			this.BtnGetSkin.TabIndex = 1;
 			this.BtnGetSkin.Text = "getSkin";
 			this.BtnGetSkin.UseVisualStyleBackColor = true;
@@ -103,9 +105,9 @@
 			// 
 			// BtnSetSkin
 			// 
-			this.BtnSetSkin.Location = new System.Drawing.Point(21, 113);
+			this.BtnSetSkin.Location = new System.Drawing.Point(363, 18);
 			this.BtnSetSkin.Name = "BtnSetSkin";
-			this.BtnSetSkin.Size = new System.Drawing.Size(130, 23);
+			this.BtnSetSkin.Size = new System.Drawing.Size(102, 41);
 			this.BtnSetSkin.TabIndex = 2;
 			this.BtnSetSkin.Text = "setSkin";
 			this.BtnSetSkin.UseVisualStyleBackColor = true;
@@ -132,14 +134,15 @@
 			// 
 			// gpSkin
 			// 
-			this.gpSkin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.gpSkin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.gpSkin.Controls.Add(this.px16BitColorBars1);
 			this.gpSkin.Controls.Add(this.BtnGetSkin);
 			this.gpSkin.Controls.Add(this.BtnSetSkin);
 			this.gpSkin.Enabled = false;
-			this.gpSkin.Location = new System.Drawing.Point(490, 21);
+			this.gpSkin.Location = new System.Drawing.Point(16, 257);
 			this.gpSkin.Name = "gpSkin";
-			this.gpSkin.Size = new System.Drawing.Size(391, 157);
+			this.gpSkin.Size = new System.Drawing.Size(479, 108);
 			this.gpSkin.TabIndex = 4;
 			this.gpSkin.TabStop = false;
 			this.gpSkin.Text = "SkinColor";
@@ -147,7 +150,7 @@
 			// btnClear
 			// 
 			this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnClear.Location = new System.Drawing.Point(5, 129);
+			this.btnClear.Location = new System.Drawing.Point(5, 215);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(98, 23);
 			this.btnClear.TabIndex = 1;
@@ -160,16 +163,59 @@
 			this.gbSend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbSend.Controls.Add(this.label4);
+			this.gbSend.Controls.Add(this.btnTextSend);
 			this.gbSend.Controls.Add(this.label3);
 			this.gbSend.Controls.Add(this.tbHeader);
 			this.gbSend.Controls.Add(this.tbSend);
 			this.gbSend.Controls.Add(this.btnSend);
 			this.gbSend.Location = new System.Drawing.Point(12, 46);
 			this.gbSend.Name = "gbSend";
-			this.gbSend.Size = new System.Drawing.Size(459, 255);
+			this.gbSend.Size = new System.Drawing.Size(483, 205);
 			this.gbSend.TabIndex = 2;
 			this.gbSend.TabStop = false;
-			this.gbSend.Text = "SendText";
+			this.gbSend.Text = "Serial Send";
+			// 
+			// label4
+			// 
+			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(293, 181);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(33, 12);
+			this.label4.TabIndex = 5;
+			this.label4.Text = "TEXT";
+			// 
+			// btnTextSend
+			// 
+			this.btnTextSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnTextSend.Enabled = false;
+			this.btnTextSend.Location = new System.Drawing.Point(332, 176);
+			this.btnTextSend.Name = "btnTextSend";
+			this.btnTextSend.Size = new System.Drawing.Size(98, 23);
+			this.btnTextSend.TabIndex = 4;
+			this.btnTextSend.Text = "TextSend";
+			this.btnTextSend.UseVisualStyleBackColor = true;
+			this.btnTextSend.Click += new System.EventHandler(this.btnTextSend_Click);
+			// 
+			// label3
+			// 
+			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(47, 181);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(41, 12);
+			this.label3.TabIndex = 3;
+			this.label3.Text = "Header";
+			// 
+			// tbHeader
+			// 
+			this.tbHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.tbHeader.Location = new System.Drawing.Point(94, 178);
+			this.tbHeader.Name = "tbHeader";
+			this.tbHeader.Size = new System.Drawing.Size(65, 19);
+			this.tbHeader.TabIndex = 2;
+			this.tbHeader.Text = "text";
 			// 
 			// gpRecived
 			// 
@@ -177,33 +223,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gpRecived.Controls.Add(this.tbRecive);
 			this.gpRecived.Controls.Add(this.btnClear);
-			this.gpRecived.Location = new System.Drawing.Point(7, 307);
+			this.gpRecived.Location = new System.Drawing.Point(7, 371);
 			this.gpRecived.Name = "gpRecived";
-			this.gpRecived.Size = new System.Drawing.Size(464, 169);
+			this.gpRecived.Size = new System.Drawing.Size(317, 255);
 			this.gpRecived.TabIndex = 3;
 			this.gpRecived.TabStop = false;
 			this.gpRecived.Text = "Recived";
 			// 
-			// px16BitColorBars1
-			// 
-			this.px16BitColorBars1.ColorValue = 0;
-			this.px16BitColorBars1.Location = new System.Drawing.Point(21, 18);
-			this.px16BitColorBars1.MaximumSize = new System.Drawing.Size(348, 80);
-			this.px16BitColorBars1.MinimumSize = new System.Drawing.Size(348, 80);
-			this.px16BitColorBars1.Name = "px16BitColorBars1";
-			this.px16BitColorBars1.Size = new System.Drawing.Size(348, 80);
-			this.px16BitColorBars1.TabIndex = 7;
-			this.px16BitColorBars1.Text = "px16BitColorBars1";
-			this.px16BitColorBars1.Click += new System.EventHandler(this.px16BitColorBars1_Click);
-			// 
 			// gpWifi
 			// 
+			this.gpWifi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.gpWifi.Controls.Add(this.label2);
 			this.gpWifi.Controls.Add(this.label1);
 			this.gpWifi.Controls.Add(this.btnSetWifi);
 			this.gpWifi.Controls.Add(this.tbPASSWORD);
 			this.gpWifi.Controls.Add(this.tbSSID);
-			this.gpWifi.Location = new System.Drawing.Point(490, 184);
+			this.gpWifi.Location = new System.Drawing.Point(344, 371);
 			this.gpWifi.Name = "gpWifi";
 			this.gpWifi.Size = new System.Drawing.Size(151, 127);
 			this.gpWifi.TabIndex = 5;
@@ -252,28 +287,23 @@
 			this.tbSSID.Size = new System.Drawing.Size(100, 19);
 			this.tbSSID.TabIndex = 0;
 			// 
-			// tbHeader
+			// px16BitColorBars1
 			// 
-			this.tbHeader.Location = new System.Drawing.Point(70, 18);
-			this.tbHeader.Name = "tbHeader";
-			this.tbHeader.Size = new System.Drawing.Size(65, 19);
-			this.tbHeader.TabIndex = 2;
-			this.tbHeader.Text = "text";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(23, 24);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(41, 12);
-			this.label3.TabIndex = 3;
-			this.label3.Text = "Header";
+			this.px16BitColorBars1.ColorValue = 0;
+			this.px16BitColorBars1.Location = new System.Drawing.Point(9, 18);
+			this.px16BitColorBars1.MaximumSize = new System.Drawing.Size(348, 80);
+			this.px16BitColorBars1.MinimumSize = new System.Drawing.Size(348, 80);
+			this.px16BitColorBars1.Name = "px16BitColorBars1";
+			this.px16BitColorBars1.Size = new System.Drawing.Size(348, 80);
+			this.px16BitColorBars1.TabIndex = 7;
+			this.px16BitColorBars1.Text = "px16BitColorBars1";
+			this.px16BitColorBars1.Click += new System.EventHandler(this.px16BitColorBars1_Click);
 			// 
 			// SerialForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(989, 491);
+			this.ClientSize = new System.Drawing.Size(507, 641);
 			this.Controls.Add(this.gpWifi);
 			this.Controls.Add(this.gpRecived);
 			this.Controls.Add(this.gbSend);
@@ -314,6 +344,8 @@
 		private Px16BitColorBars px16BitColorBars1;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox tbHeader;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Button btnTextSend;
 	}
 }
 

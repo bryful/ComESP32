@@ -40,7 +40,7 @@
 			// 
 			this.trackBar1.AutoSize = false;
 			this.trackBar1.LargeChange = 1;
-			this.trackBar1.Location = new System.Drawing.Point(312, 225);
+			this.trackBar1.Location = new System.Drawing.Point(345, 209);
 			this.trackBar1.Maximum = 31;
 			this.trackBar1.Name = "trackBar1";
 			this.trackBar1.Size = new System.Drawing.Size(104, 19);
@@ -49,7 +49,7 @@
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(206, 225);
+			this.textBox1.Location = new System.Drawing.Point(316, 138);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(100, 19);
 			this.textBox1.TabIndex = 2;
@@ -76,8 +76,8 @@
 			// 
 			// px16BitColorBars1
 			// 
-			this.px16BitColorBars1.ColorValue = 0;
-			this.px16BitColorBars1.Location = new System.Drawing.Point(161, 265);
+			this.px16BitColorBars1.ColorValue = 21648;
+			this.px16BitColorBars1.Location = new System.Drawing.Point(137, 234);
 			this.px16BitColorBars1.MaximumSize = new System.Drawing.Size(348, 80);
 			this.px16BitColorBars1.MinimumSize = new System.Drawing.Size(348, 80);
 			this.px16BitColorBars1.Name = "px16BitColorBars1";

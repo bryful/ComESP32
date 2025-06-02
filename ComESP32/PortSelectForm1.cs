@@ -12,7 +12,7 @@ namespace ComEsp32
 {
 	public partial class PortSelectForm1 : Form
 	{
-		private ComESP32 esp32_ = null;
+		private SerialPortESP32 esp32_ = null;
 		public PortSelectForm1()
 		{
 			InitializeComponent();
@@ -24,11 +24,10 @@ namespace ComEsp32
 			};
 			btnOK.Enabled = (listBox1.SelectedIndex >= 0);
 		}
-		public bool ShowDialog(ComESP32 esp32)
+		public bool ShowDialog(SerialPortESP32 esp32)
 		{
 			esp32_ = esp32;
-			listBox1.Items.AddRange (esp32_.ListupPort());
-			listBox1.SelectedIndex = esp32_.PortIndex;
+			GetPortList();
 			 if (ShowDialog() == DialogResult.OK)
 			{
 				esp32_.PortIndex = listBox1.SelectedIndex;
@@ -38,6 +37,11 @@ namespace ComEsp32
 			{
 				return false;
 			}
+		}
+		public void GetPortList()
+		{
+			listBox1.Items.AddRange(esp32_.ListupPort());
+			listBox1.SelectedIndex = esp32_.PortIndex;
 		}
 	}
 }

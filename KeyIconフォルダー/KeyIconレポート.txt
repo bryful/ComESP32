@@ -1,0 +1,78 @@
+レポート作成日 : 
+	2025/07/07	18:15:51
+
+プロジェクト名 : KeyIcon.aep
+
+収集されたソースファイル先 : 
+	C:\Users\51000291\Documents\PlatformIO\KeyIconフォルダー
+
+収集されたソースファイル : すべて
+
+収集されたコンポジション :  
+	Icon
+	Icon_profile_prev
+	Icon_profile_next
+	Icon_undo
+	Icon_redo
+	Icon_brush
+	Icon_pencil
+	Icon_eraser
+	Icon_paint
+	Icon_shift
+	Icon_ctrl
+	Icon_alt
+	Icon_mouse_right
+	Icon_marwuee
+	Icon_lasso
+	Icon_space
+	Icon_delete
+	Icon_delete2
+	Icon_selection
+	Icon_zoom
+	Icon_ratate
+	Icon_brush_size
+	Icon_pen
+	Icon_diect
+	Icon_pen_add
+	Icon_pen_del
+	Icon_anc
+	Icon_join
+	Icon_node
+	Icon_spoit
+	Icon_text
+	
+収集されたファイルの数 :  17
+
+収集されたファイルのサイズ :  10 KB
+
+収集されたソースファイル : 
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\brush_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\colorize_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\colors_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\delete_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\ink_eraser_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\match_case_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\mouse_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\north_west_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\pen_size_4_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\rotate_left_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\stroke_full_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\stylus_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\stylus_fountain_pen_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\swipe_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\undo_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\vignette_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	C:\Users\51000291\Documents\PlatformIO\Projects\TestWROOM1\pict\zoom_in_40dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.png
+	
+レンダリングプラグイン:
+	クラシック3D
+	
+使用されたエフェクトの数 :  1
+
+エフェクト :  塗り
+	
+
+レイヤー :  テキストレイヤー
+	外部依存 :  
+		フォントファミリー : 「Chakra Petch」、フォントスタイル : 「Bold」
+

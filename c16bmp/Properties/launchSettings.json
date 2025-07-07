@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "c16bmp": {
+      "commandName": "Project",
+      "commandLineArgs": "IconA.png"
+    }
+  }
+}

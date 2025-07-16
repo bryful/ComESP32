@@ -1,5 +1,7 @@
 using System.Drawing;
 using System.IO;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 public class ImageToRgb565Converter
 {
@@ -35,5 +37,52 @@ public class ImageToRgb565Converter
             if ((i + 1) % 16 == 0) sw.WriteLine();
         }
         sw.WriteLine("\n};");
+    }
+
+    // RGB565のushort配列から16bpp BMPファイルを出力
+    public void WriteRgb565Bmp(string outputPath, int width, int height, ushort[] rgb565)
+    {
+        // 16bpp RGB565のピクセルデータをバイト配列に変換
+        int stride = ((width * 16 + 31) / 32) * 4; // 4byteアライン
+        byte[] bmpData = new byte[stride * height];
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                int idx = y * width + x;
+                int offset = y * stride + x * 2;
+                bmpData[offset] = (byte)(rgb565[idx] & 0xFF);
+                bmpData[offset + 1] = (byte)((rgb565[idx] >> 8) & 0xFF);
+            }
+        }
+        using var fs = new FileStream(outputPath, FileMode.Create, FileAccess.Write);
+        // BITMAPFILEHEADER
+        fs.Write(new byte[] { 0x42, 0x4D }, 0, 2); // 'BM'
+        int fileSize = 14 + 40 + 12 + bmpData.Length;
+        fs.Write(BitConverter.GetBytes(fileSize), 0, 4);
+        fs.Write(new byte[4], 0, 4); // reserved
+        int offsetBits = 14 + 40 + 12;
+        fs.Write(BitConverter.GetBytes(offsetBits), 0, 4);
+        // BITMAPINFOHEADER
+        fs.Write(BitConverter.GetBytes(40), 0, 4); // header size
+        fs.Write(BitConverter.GetBytes(width), 0, 4);
+        fs.Write(BitConverter.GetBytes(height), 0, 4);
+        fs.Write(BitConverter.GetBytes((ushort)1), 0, 2); // planes
+        fs.Write(BitConverter.GetBytes((ushort)16), 0, 2); // bit count
+        fs.Write(BitConverter.GetBytes(3), 0, 4); // compression=BI_BITFIELDS
+        fs.Write(BitConverter.GetBytes(bmpData.Length), 0, 4); // image size
+        fs.Write(BitConverter.GetBytes(0), 0, 4); // xppm
+        fs.Write(BitConverter.GetBytes(0), 0, 4); // yppm
+        fs.Write(BitConverter.GetBytes(0), 0, 4); // clr used
+        fs.Write(BitConverter.GetBytes(0), 0, 4); // clr important
+        // RGB565マスク
+        fs.Write(BitConverter.GetBytes(0xF800), 0, 4); // red mask
+        fs.Write(BitConverter.GetBytes(0x07E0), 0, 4); // green mask
+        fs.Write(BitConverter.GetBytes(0x001F), 0, 4); // blue mask
+        // ピクセルデータ（下から上）
+        for (int y = height - 1; y >= 0; y--)
+        {
+            fs.Write(bmpData, y * stride, stride);
+        }
     }
 }

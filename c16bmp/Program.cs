@@ -1,4 +1,4 @@
-﻿// 画像ファイルを読み込み、RGB565形式に変換し、.hファイルとして出力するコンソールアプリ
+﻿// 画像ファイルを読み込み、RGB565形式に変換し、.hファイルとRGB565 BMPを出力するコンソールアプリ
 using System.Drawing;
 using System.IO;
 
@@ -43,6 +43,10 @@ foreach (var inputFile in files)
         var rgb565 = converter.ConvertToRgb565(bmp);
         converter.WriteHeaderFile(outFile, arrayName, width, height, rgb565);
         Console.WriteLine($"Header file generated: {outFile}");
+        // RGB565 BMPも出力
+        string bmpOutFile = Path.Combine(dir, arrayName + "_rgb565.bmp");
+        converter.WriteRgb565Bmp(bmpOutFile, width, height, rgb565);
+        Console.WriteLine($"RGB565 BMP generated: {bmpOutFile}");
     }
     catch (Exception ex)
     {

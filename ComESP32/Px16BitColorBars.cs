@@ -174,11 +174,11 @@ namespace ComEsp32
 		}
 		private void Calc()
 		{
-			red255 = (int)((int)numR.Value<<3 | 0b111);
+			red255 = (int)Math.Round(numR.Value*255.0 /31.0);
 			if (red255 <= 0b0111) red255 = 0;
-			green255 = (int)((int)numG.Value << 2 | 0b11);
+			green255 = (int)Math.Round(numG.Value * 255.0 / 63.0); ;
 			if (green255 <= 0b0111) green255 = 0;
-			blue255 = (int)((int)numB.Value  <<3 | 0b111);
+			blue255 = (int)Math.Round(numB.Value * 255.0 / 31.0);
 			if (blue255 <= 0b0111) blue255 = 0;
 
 			refFlag = true;
@@ -212,7 +212,7 @@ namespace ComEsp32
 		{
 			int r = (v >> 16 >> 3) & 0x1F;
 			int g = (v >> 8 >> 2) & 0x3F;
-			int b = v & 0x1F;
+			int b = (v>>3) & 0x1F;
 			refFlag = true;
 			numR.Value = (byte)r;
 			numG.Value = (byte)g;

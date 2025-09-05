@@ -167,12 +167,6 @@ true);
 				int r = Convert.ToInt32(s.Substring(0, 2), 16);
 				int g = Convert.ToInt32(s.Substring(2, 2), 16);
 				int b = Convert.ToInt32(s.Substring(4, 2), 16);
-				r = r | 0b00000111;
-				if (r == 0b111) r = 0;
-				g = g | 0b00000011;
-				if (g == 0b11) g = 0;
-				b = b | 0b00000111;
-				if (b == 0b111) b = 0;
 				return Color.FromArgb(0xFF, r, g, b);
 			}
 			catch
@@ -263,7 +257,7 @@ true);
 					}
 					_paletteColors = pals;
 					ChkPalette();
-
+					this.Invalidate();
 					ret = true;
 				}
 				else
@@ -310,6 +304,7 @@ true);
 		}
 		private void ChkPalette()
 		{
+			/*
 			int idx;
 			for (idx = 0; idx < _paletteColors.Length; idx++)
 			{
@@ -325,6 +320,7 @@ true);
 				if (b == 0b111) b = 0;
 				_paletteColors[idx] = Color.FromArgb(0xFF, r, g, b);
 			}
+			*/
 		}
 		private int[] CustomColors = new int[0];
 		void ColorDlg()

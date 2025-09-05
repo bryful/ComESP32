@@ -16,8 +16,11 @@ public class ImageToRgb565Converter
             for (int x = 0; x < width; x++)
             {
                 Color c = bmp.GetPixel(x, y);
-                ushort value = (ushort)(((c.R & 0xF8) << 8) | ((c.G & 0xFC) << 3) | (c.B >> 3));
-                rgb565[idx++] = value;
+				ushort value = (ushort)(((c.R & 0xF8) << 8) | ((c.G & 0xFC) << 3) | (c.B >> 3));
+
+
+
+				rgb565[idx++] = value;
             }
         }
         return rgb565;

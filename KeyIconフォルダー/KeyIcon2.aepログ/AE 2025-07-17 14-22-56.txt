@@ -1,0 +1,17 @@
+プロジェクトﾞKeyIcon2.aepﾞのAdobe After Effects v24.6.7 Windows 64レンダリングログ
+
+レンダリングは2025/07/17、 14:22:56に開始しました。
+
+  2025/07/17 14:22:56 : コンポジションﾞmouse_rightﾞの開始
+
+  出力先 : C:\Users\51000291\source\repos\Icon48x48Maker\pict\mouse_right_[#####].png    2025/07/17 14:22:56 : コンポジションﾞmouse_rightﾞの終了
+
+
+  2025/07/17 14:22:56 : コンポジションﾞmouse_leftﾞの開始
+
+  出力先 : C:\Users\51000291\source\repos\Icon48x48Maker\pict\mouse_left (00001).png    2025/07/17 14:22:56 : コンポジションﾞmouse_leftﾞの終了
+
+
+  合計経過時間 : 0 秒
+ログは2025/07/17、14:22:56に閉じられました。
+
